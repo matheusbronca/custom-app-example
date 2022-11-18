@@ -17,11 +17,11 @@ export class PokemonClient extends ExternalClient {
   }
 
   // Get all the pokemon info, use it's name to retrieve all of it's data
-  // public getPokemonByName = async (pokemonName: string) => {
-  //   return this.http.get(`/pokemon/${pokemonName}`, {
-  //     headers: {
-  //       'X-Vtex-Use-Https': 'true',
-  //     },
-  //   })
-  // }
+  public getPokemonByName = async (pokemonName: string) => {
+    return this.http.get(`/pokemon/${pokemonName}`, {
+      headers: {
+        'X-Vtex-Use-Https': 'true',
+      },
+    })
+  }
 }

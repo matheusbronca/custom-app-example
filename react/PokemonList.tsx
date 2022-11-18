@@ -1,3 +1,4 @@
+/* eslint-disable padding-line-between-statements */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useCssHandles } from 'vtex.css-handles'
@@ -14,7 +15,7 @@ interface IPokemon {
   url: string
 }
 
-function PokemonList({ quantity }: IPokemonListProps) {
+function PokemonList({ quantity = 5 }: IPokemonListProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [pokemons, setPokemons] = useState<IPokemon[]>([])
   const styleHandles = useCssHandles(CSS_HANDLES)
@@ -23,8 +24,14 @@ function PokemonList({ quantity }: IPokemonListProps) {
     const url = `/_v/pokemon-list/${quantity}`
     const getList = async () => {
       const response = await axios.get(url)
-
-      setPokemons(response.data.results)
+      const pokemonsArr = response.data.results
+      const promises = pokemonsArr.map((pokemon: IPokemon) =>
+        axios.get(`/_v/pokemon/${pokemon.name}`)
+      )
+      const result = await Promise.all(promises)
+      // eslint-disable-next-line no-console
+      console.log('result::: ', result)
+      setPokemons(pokemonsArr)
       setIsLoading(false)
     }
 
@@ -44,7 +51,7 @@ function PokemonList({ quantity }: IPokemonListProps) {
     //   // setPokemons(response.data.results)
     // })
     getList()
-  }, [])
+  }, [quantity])
 
   if (isLoading) return 'Loading...'
 

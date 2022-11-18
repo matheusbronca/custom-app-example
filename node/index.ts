@@ -3,6 +3,7 @@ import { LRUCache, method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { pokemonList } from './middlewares/pokemonList'
+import { pokemonByName } from './middlewares/pokemonName'
 
 const TIMEOUT_MS = 800
 
@@ -46,6 +47,9 @@ export default new Service({
     // `status` is the route ID from service.json. It maps to an array of middlewares (or a single handler).
     pokemonList: method({
       GET: [pokemonList],
+    }),
+    pokemon: method({
+      GET: [pokemonByName],
     }),
   },
 })

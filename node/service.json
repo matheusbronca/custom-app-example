@@ -9,6 +9,22 @@
     "pokemonList": {
       "path": "/_v/pokemon-list/:quantity",
       "public": true
+    },
+    "pokemon": {
+      "path": "/_v/pokemon/:pokemonName",
+      "public": true
+    },
+    "totalItemsAvailable": {
+      "path": "/_v/total-items-available/:skuId",
+      "public": true,
+      "access": "authorized",
+      "policies": [
+        {
+          "effect": "allow",
+          "actions": ["get"],
+          "principals": ["vrn:apps:*:*:*:*", "vrn:proxy:*:*:*:*"]
+        }
+      ]
     }
   }
 }

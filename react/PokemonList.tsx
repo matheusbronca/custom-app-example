@@ -20,7 +20,7 @@ function PokemonList({ quantity }: IPokemonListProps) {
   const styleHandles = useCssHandles(CSS_HANDLES)
 
   useEffect(() => {
-    const url = `https://mathe--sqlipartnerfr.myvtex.com/_v/pokemon-list/${quantity}`
+    const url = `/_v/pokemon-list/${quantity}`
     const getList = async () => {
       const response = await axios.get(url)
 

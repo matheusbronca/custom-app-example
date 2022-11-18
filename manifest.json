@@ -1,12 +1,15 @@
 {
-  "name": "custom-app-example",
-  "vendor": "incentropartnernl",
+  "name": "total-items-available",
+  "vendor": "sqlipartnerfr",
   "version": "0.0.1-beta.0",
   "title": "Customized Application Example",
   "description": "A didactic application that shows the various possibilities that a custom vtex IO application is capable of delivering",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
-  "dependencies": {},
+  "dependencies": {
+    "vtex.css-handles": "0.x",
+    "vtex.product-context": "0.x"
+  },
   "builders": {
     "graphql": "1.x",
     "node": "6.x",
@@ -58,9 +61,7 @@
   ],
   "billingOptions": {
     "type": "free",
-    "availableCountries": [
-      "*"
-    ],
+    "availableCountries": ["*"],
     "support": {
       "url": "https://frncomunicacao.com.br",
       "email": "matheus.bronca@frncubo.com",

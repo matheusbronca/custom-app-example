@@ -1,0 +1,8 @@
+{
+  "total-items-available": {
+    "component": "TotalItemsAvailable"
+  },
+  "pokemon-list": {
+    "component": "PokemonList"
+  }
+}

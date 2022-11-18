@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import axios from 'axios'
 import { useCssHandles } from 'vtex.css-handles'
-// import styles from './styles/totalItemsAvailable.module.css'
+import styles from './styles/pokemon.module.css'
 
 import randomizer from './utils/randomizer'
 
@@ -119,38 +119,49 @@ function PokemonList({ quantity = 5 }: IPokemonListProps) {
   }
 
   return (
-    <ul className={styleHandles.classList}>
+    <ul className={`${styles.row} ${styleHandles.classList}`}>
       {pokemons?.map((pokemon: IPokemon, index) => {
         if (index > quantity - 1) return
         return (
           <li key={pokemon.name}>
-            <img src={pokemon.image} alt={pokemon.name} />
-            <a href={pokemon.url}>{pokemon.name}</a>
-            <ul>
-              {pokemon.types.map((type) => {
-                return <li key={type}>{type}</li>
-              })}
-            </ul>
-            <div>
-              {memoizedButtons.map(
-                (questionsButtons: any, buttonIndex: number) => {
-                  if (index !== buttonIndex) return
-                  return questionsButtons.map((button: any) => {
-                    return (
-                      <>
-                        <button
-                          key={button}
-                          onClick={(e) => handleClick(e, index)}
-                        >
-                          {button}
-                        </button>
-                      </>
-                    )
-                  })
-                }
+            <div className={`${styles.container}`}>
+              <img
+                className={`${styles.img}`}
+                src={pokemon.image}
+                alt={pokemon.name}
+              />
+              <a className={`${styles.name}`} href={pokemon.url}>
+                {pokemon.name}
+              </a>
+              <ul className={`${styles.types}`}>
+                {pokemon.types.map((type) => {
+                  return <li key={type}>{type}</li>
+                })}
+              </ul>
+              <div>
+                <p>Who's that Pokémon?</p>
+                {memoizedButtons.map(
+                  (questionsButtons: any, buttonIndex: number) => {
+                    if (index !== buttonIndex) return
+                    return questionsButtons.map((button: any) => {
+                      return (
+                        <>
+                          <button
+                            key={button}
+                            onClick={(e) => handleClick(e, index)}
+                          >
+                            {button}
+                          </button>
+                        </>
+                      )
+                    })
+                  }
+                )}
+              </div>
+              {questions !== null && questions[index].isCorrect && (
+                <p>You're right!</p>
               )}
             </div>
-            {questions?.length && questions[index].isCorrect && <p>Acertou!</p>}
           </li>
         )
       })}

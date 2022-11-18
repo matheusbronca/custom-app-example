@@ -1,17 +1,11 @@
 import type { ClientsConfig, ServiceContext, RecorderState } from '@vtex/api'
-import { LRUCache, method, Service } from '@vtex/api'
+import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { pokemonList } from './middlewares/pokemonList'
 import { pokemonByName } from './middlewares/pokemonName'
 
 const TIMEOUT_MS = 800
-
-// Create a LRU memory cache for the Status client.
-// The @vtex/api HttpClient respects Cache-Control headers and uses the provided cache.
-const memoryCache = new LRUCache<string, any>({ max: 5000 })
-
-metrics.trackCache('status', memoryCache)
 
 // This is the configuration for clients available in `ctx.clients`.
 const clients: ClientsConfig<Clients> = {
@@ -24,9 +18,6 @@ const clients: ClientsConfig<Clients> = {
       timeout: TIMEOUT_MS,
     },
     // This key will be merged with the default options and add this cache to our Status client.
-    status: {
-      memoryCache,
-    },
   },
 }
 

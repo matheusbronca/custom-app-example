@@ -1,0 +1,52 @@
+.row {
+  display: flex;
+  list-style: none;
+}
+
+.row > li {
+  background: #f0f0f0;
+  border-radius: 5px;
+  padding: 3rem 2rem;
+}
+
+.img {
+  background: white;
+  border-radius: 100px;
+  padding: 0.5rem;
+}
+
+.name {
+  font-family: sans-serif;
+  font-size: 24px;
+  color: #4a6fac;
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 0.5rem;
+}
+
+.row > li + li {
+  margin-left: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.types {
+  display: flex;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.types li {
+  color: black;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.types > li + li {
+  margin-left: 0.5rem;
+}

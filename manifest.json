@@ -14,9 +14,7 @@
     "react": "3.x",
     "store": "0.x"
   },
-  "scripts": {
-    "prereleasy": "bash lint.sh"
-  },
+  "scripts": {},
   "credentialType": "absolute",
   "policies": [
     {

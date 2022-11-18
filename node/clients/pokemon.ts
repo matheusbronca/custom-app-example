@@ -9,11 +9,19 @@ export class PokemonClient extends ExternalClient {
 
   // Get the pokemons between a Range:
   public getPokemonsList = async (quantity: number) => {
-    return this.http.get(`pokemon?limit=${quantity}&offset=0`, {
-      headers: {
-        'X-Vtex-Use-Https': 'true',
-      },
-    })
+    const randomIntFromInterval = (min: number, max: number): number => {
+      // min and max included
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    return this.http.get(
+      `pokemon?limit=${quantity}&offset=${randomIntFromInterval(0, 100)}`,
+      {
+        headers: {
+          'X-Vtex-Use-Https': 'true',
+        },
+      }
+    )
   }
 
   // Get all the pokemon info, use it's name to retrieve all of it's data

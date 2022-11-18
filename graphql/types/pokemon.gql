@@ -1,0 +1,11 @@
+type Pokemon {
+  name: String
+  url: String
+}
+
+type PokemonResponse {
+  count: Int
+  next: String
+  previous: String
+  results: [Pokemon]
+}

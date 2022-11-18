@@ -1,7 +1,7 @@
 {
   "name": "custom-app-example",
   "vendor": "incentropartnernl",
-  "version": "0.0.3-beta.0",
+  "version": "0.0.4-beta.0",
   "title": "Customized Application Example",
   "description": "A didactic application that shows the various possibilities that a custom vtex IO application is capable of delivering",
   "mustUpdateAt": "2018-01-04",
